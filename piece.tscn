@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvyv5yyfdl5ai"]
+
+[ext_resource type="Texture2D" uid="uid://cwqfmjyibkqd4" path="res://assets/pieces/row-2-column-6.png" id="1_y0ujw"]
+[ext_resource type="Script" path="res://Piece.gd" id="2_d84wx"]
+[ext_resource type="Texture2D" uid="uid://ck8rwmqsattqd" path="res://assets/pieces/row-2-column-5.png" id="3_lka1d"]
+[ext_resource type="Texture2D" uid="uid://nrgywlolhrcp" path="res://assets/pieces/row-2-column-4.png" id="4_pvh88"]
+[ext_resource type="Texture2D" uid="uid://dujktq0pajg3r" path="res://assets/pieces/row-2-column-3.png" id="5_6uck2"]
+[ext_resource type="Texture2D" uid="uid://b2bavee8r3402" path="res://assets/pieces/row-2-column-1.png" id="6_3b6xh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy3k4"]
+
+[node name="Piece" type="Sprite2D"]
+scale = Vector2(2.417, 2.417)
+texture = ExtResource("1_y0ujw")
+script = ExtResource("2_d84wx")
+piece_textures = Array[Texture2D]([ExtResource("1_y0ujw"), ExtResource("3_lka1d"), ExtResource("4_pvh88"), ExtResource("5_6uck2"), ExtResource("6_3b6xh")])
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_wy3k4")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
